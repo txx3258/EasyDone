@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=no">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../favicon.ico">
+
+<style>
+    ._center {
+        text-align: center;
+    }
+
+    .f_l {
+        float: left
+    }
+    .f_r {
+        float: right
+    }
+    .z_i9999 {
+        z-index: 99999
+    }
+    #base_nav li {
+        width: 25%;
+        float: left;
+    }
+    #base_nav li a{
+        font-size: 12px;
+        padding: 2px 2px;
+    }
+    #account_nav li {
+        width: 33.333333%;
+        float: left;
+    }
+    #account_nav li {
+        padding: 10px 10px;
+    }
+    .m_t5_ {
+        margin-top: 5px
+    }
+    a {
+        color: black
+    }
+    .cl_main {
+        color: #bb0727;
+    }
+    .cl_orange {
+        color: #bb5508
+    }
+    .active {
+        font-weight: 900;
+    }
+    #NO_CONTENT{
+        width: 80px;height: 50px;
+    }
+    .display_no{
+        display: none;
+    }
+    .display_yes{
+        display: block;
+    }
+
+    .div_center{
+        clear: both;
+        margin: auto;
+        text-align: center;
+    }
+    .show_title{
+        font-size: larger;
+        margin-top:10px;
+        font-weight: bolder;
+        width: 98%;
+        height: 25px;
+    }
+    .mt_20{
+        margin-top: 20px;
+    }
+    .tab_icon{
+        width: 30px;height: 30px;
+    }
+    .i_add{
+        background: url('../images/add.jpg')
+    }
+    .i_undone{
+        background: url('../images/undone.jpg')
+    }
+    .i_manage{
+        background: url('../images/manage.jpg')
+    }
+    .i_seting{
+        background: url('../images/setting.jpg')
+    }
+</style>
+<title class="_center">新订单</title>
+
+<!-- Bootstrap core CSS   -->
+<link href="css/bootstrap.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+
+</head>
+
+<body>
+<div id="fix_no_content">
+
+</div>
+<div id="fix_container">
+
+</div>
+<div id="fix_manage" style="width: 98%;margin: auto;text-align: center;">
+    <ul class="list-group" style="margin-top: 10px;text-align: left;">
+        <li class="list-group-item"><a href="#" onclick="reload('balance')">余额管理</a></li>
+        <li class="list-group-item"><span class="badge">未实现</span>订单跟踪</li>
+        <li class="list-group-item"><span class="badge">未实现</span>历史订单</li>
+        <li class="list-group-item"><span class="badge">4.5</span>用户评论</li>
+        <li class="list-group-item"><span class="badge">未实现</span>时间管理</li>
+        <li class="list-group-item"><span class="badge">新</span>系统消息</li>
+    </ul>
+</div>
+
+<div id="fix_Setting" style="width: 98%;margin: auto;text-align: center;">
+<div class="panel panel-default" style="text-align:left;margin-top: 10px;">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            登录设置
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="radio">
+            <label><input type="radio" name="optionsRadios"  value="">直接登录</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="optionsRadios"  value="">登录密码</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="optionsRadios"  value="">账号+密码</label>
+        </div>
+    </div>
+</div>
+
+    <div class="panel panel-default" style="text-align:left;margin-top: 10px;">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                待机轮询时间
+            </h3>
+        </div>
+        <div class="panel-body">
+            <div class="radio">
+                <label><input type="radio" name="optionsTime"  value="">十分钟</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optionsTime"  value="">半小时</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optionsTime"  value="">1小时</label>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="navbar navbar-default navbar-fixed-bottom">
+    <ul class="nav _center" id="base_nav">
+        <li onclick="_tabs('new_item')" class="_center"><a id="new_item" class="active" href="#">
+            <div class="div_center tab_icon i_add"></div>新订单</a></li>
+        <li onclick="_tabs('un_done')">
+            <a id="un_done" href="#">
+                <div class="div_center tab_icon i_undone"></div>未处理</a>
+        </li>
+
+        <li onclick="_tabs('manage')"><a id="manage" href="#">
+
+            <div class="div_center tab_icon i_manage"></div>管理</a></li>
+        <li onclick="_tabs('settings')">
+            <a id="settings" href="#" >
+                <div class="div_center tab_icon i_seting"></div>
+                <span>设置</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+
+</body>
+<script type="text/javascript">
+    function _DOM(id) {
+        return document.getElementById(id);
+    }
+    function _setAttribute(dom, item) {
+        dom.setAttribute('class', item);
+    }
+    function _tabs(id) {
+        no_tab_active();
+        _setAttribute(_DOM(id), 'active');
+        _setTitle(id);
+        hideItem();
+        _setTab(id);
+    }
+    function no_tab_active() {
+        ['new_item', 'un_done', 'manage', 'settings'].forEach(function (id) {
+            _DOM(id).setAttribute('class', '');
+        })
+    }
+    var map = {
+        "new_item": "新订单",
+        "un_done": "未处理",
+        "manage": "管理",
+        "settings": "设置",
+    },tabMap={
+        "new_item":"fix_container",
+        "un_done":"fix_container",
+        "manage":"fix_manage",
+        "settings":"fix_Setting"
+    };
+
+    function _setTitle(id) {
+        document.title = map[id];
+    }
+    function _setTab(id){
+        var domId=tabMap[id];
+        if (domId=="fix_container"){
+            fg_order.data.id=id;
+            load(fg_order);
+        }
+        _DOM(domId).setAttribute("class",'display_yes');
+    }
+    function _setNoContent(id){
+        var domContainer=_DOM("fix_container");
+        domContainer.setAttribute("class",'display_no');
+        domContainer.innerHTML='';
+
+        var domContent=_DOM("fix_no_content");
+        var center="position:absolute;left:"+
+                (document.documentElement.clientWidth/2-40)+'px;'+
+                "top:"+((document.documentElement.clientHeight)/2-50)+'px;';
+        domContent.setAttribute("class",'display_yes');
+        domContent.style.cssText=center;
+        domContent.innerHTML=map[id]+'暂无';
+    }
+
+    function showItem(){
+        _DOM("item_menu").setAttribute("class",'display_yes dropdown-menu');
+    }
+
+    function hideItem(){
+        _DOM("fix_no_content").setAttribute("class",'display_no');
+        _DOM("fix_container").setAttribute("class",'display_no');
+        _DOM("fix_manage").setAttribute("class",'display_no');
+        _DOM("fix_Setting").setAttribute("class",'display_no');
+    }
+    function initXMLhttp(){var xmlhttp;if(window.XMLHttpRequest){xmlhttp=new XMLHttpRequest()}else{xmlhttp=new ActiveXObject("Microsoft.XMLHTTP")}return xmlhttp}function minAjax(config){var xmlhttp=initXMLhttp();xmlhttp.onreadystatechange=function(){if(xmlhttp.readyState==4&&xmlhttp.status==200){if(config.success){config.success(xmlhttp.responseText,xmlhttp.readyState)}}};var sendString=[],sendData=config.data;if(typeof sendData==="string"){var tmpArr=String.prototype.split.call(sendData,"&");for(var i=0,j=tmpArr.length;i<j;i++){var datum=tmpArr[i].split("=");sendString.push(encodeURIComponent(datum[0])+"="+encodeURIComponent(datum[1]))}}else{if(typeof sendData==="object"&&!(sendData instanceof String||(FormData&&sendData instanceof FormData))){for(var k in sendData){var datum=sendData[k];if(Object.prototype.toString.call(datum)=="[object Array]"){for(var i=0,j=datum.length;i<j;i++){sendString.push(encodeURIComponent(k)+"[]="+encodeURIComponent(datum[i]))}}else{sendString.push(encodeURIComponent(k)+"="+encodeURIComponent(datum))}}}}sendString=sendString.join("&");if(config.type=="GET"){xmlhttp.open("GET",config.url+"?"+sendString,config.method);xmlhttp.send()}if(config.type=="POST"){xmlhttp.open("POST",config.url,config.method);xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");xmlhttp.send(sendString)}};
+    var fg_order={
+        url:"/fetchOrder",
+        type:"GET",
+        data: {
+            'id':'new_item'
+        },
+        success:function(data){
+            hideItem();
+            if (data&&data.length>5){
+                _DOM("fix_container").setAttribute("class",'display_yes');
+                _DOM("fix_container").innerHTML=data;
+            }else{
+                _setNoContent(fg_order.data.id);
+            }
+        }
+    }
+    function load(option){
+        minAjax(option);
+    }
+    function reload(id){
+        fg_order.data.id=id;
+        load(fg_order);
+    }
+    load(fg_order);
+</script>
+
+</html>
+
+
+
