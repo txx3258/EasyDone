@@ -232,6 +232,7 @@
                 amount:amount
             },
             success: function(data){
+                alert(JSON.stringify(data));
                 pingppPc.createPayment(data, function(result, err) {
                     console.log(result);
                     console.log(err);
