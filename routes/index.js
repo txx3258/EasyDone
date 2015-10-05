@@ -74,7 +74,7 @@ router.get('/pingpp',function(req,res,next){
     extra:     extra
   }, function(err, charge) {
     // YOUR CODE
-    //console.log(err);
+    console.log(err);
     res.json(charge);
   });
 
