@@ -16,15 +16,11 @@
     <div class="content2">
         <div class="app">
             <label class="text_amount">
-                <input id="amount" type="text" placeholder="金 额"/>
+                <input id="amount" value="20" type="text" placeholder="金 额"/>
             </label>
 
             <div class="ch">
-                <span class="up" onclick="wap_pay('upacp_wap')">银联 WAP</span>
-                <span class="up" onclick="wap_pay('alipay_wap')">支付宝 WAP</span>
-                <span class="up" onclick="wap_pay('bfb_wap')">百度钱包 WAP</span>
-                <span class="up" onclick="wap_pay('jdpay_wap')">京东支付 WAP</span>
-                <span class="up" onclick="wap_pay('yeepay_wap')">易宝支付 WAP</span>
+              <input type="button"value="支付" onclick="wap_pay('upacp_wap')"/>
             </div>
         </div>
     </div>
@@ -233,7 +229,6 @@
                 amount:amount
             },
             success: function(data){
-                alert(JSON.stringify(data));
                 pingppPc.createPayment(data, function(result, err) {
                     console.log(result);
                     console.log(err);
