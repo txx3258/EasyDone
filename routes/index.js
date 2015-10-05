@@ -41,7 +41,7 @@ router.get('/pingpp',function(req,res,next){
   var channel=req.query.channel,
       amount=req.query.amount;
 
-  var pingpp = require('../lib/pingpp')('sk_test_n5Cmj5GGqDm98SKaPKejLafH');
+  var pingpp = require('pingpp')('sk_test_n5Cmj5GGqDm98SKaPKejLafH');
 // pingpp.parseHeaders(/*headers*/); // 把从客户端传上来的 Headers 传到这里
 
   var extra = {};
