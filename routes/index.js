@@ -3,9 +3,9 @@ var router = express.Router();
 var fs = require('fs');
 var ejs = require("ejs");
 
-var account=fs.readFileSync('/Users/soft_tangxiaoxian/Desktop/EasyDone/views/template/account.html').toString();
-var item=fs.readFileSync('/Users/soft_tangxiaoxian/Desktop/EasyDone/views/template/item.html').toString();
-var order=fs.readFileSync('/Users/soft_tangxiaoxian/Desktop/EasyDone/views/template/order.html').toString();
+var account=fs.readFileSync('/root/EasyDone/views/template/account.html').toString();
+var item=fs.readFileSync('/root/EasyDone/views/template/item.html').toString();
+var order=fs.readFileSync('/root/EasyDone/views/template/order.html').toString();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
