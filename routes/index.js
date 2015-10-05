@@ -38,7 +38,7 @@ router.get('/cancel', function(req, res, next) {
 
 
 router.get('/pingpp',function(req,res,next){
-  var channel=req.query.channel,
+  var channel="alipay_pc_direct";//req.query.channel,
       amount=req.query.amount;
 
   var pingpp = require('pingpp')('sk_test_n5Cmj5GGqDm98SKaPKejLafH');
@@ -46,7 +46,7 @@ router.get('/pingpp',function(req,res,next){
 
   var extra = {};
   switch (channel) {
-    case 'alipay_wap':
+    case 'alipay_pc_direct':
       extra = {
         'success_url': 'http://218.244.133.25:3000/success',
         'cancel_url': 'http://218.244.133.25:3000/cancel'
