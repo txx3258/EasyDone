@@ -232,7 +232,7 @@
                 amount:amount
             },
             success: function(data){
-                pingppPc.createPayment(xhr.responseText, function(result, err) {
+                pingppPc.createPayment(data, function(result, err) {
                     console.log(result);
                     console.log(err);
                 });
